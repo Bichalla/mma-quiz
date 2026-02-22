@@ -1,15 +1,57 @@
 <!doctype html>
 <html lang="ko">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=https://statsh.app/personality" />
-    <title>Redirecting…</title>
-  </head>
-  <body>
-    이동 중…<br />
-    자동 이동이 안 되면 이 링크를 누르세요:
-    <a href="https://statsh.app/personality/">
-      https://statsh.app/personality/
-    </a>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>STATSH로 이동 중…</title>
+
+  <!-- JS 꺼져있을 때만 fallback -->
+  <noscript>
+    <meta http-equiv="refresh" content="0; url=https://statsh.app/personality/" />
+  </noscript>
+
+  <style>
+    :root { color-scheme: light dark; }
+    body { margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    .wrap { min-height: 100vh; display:flex; align-items:center; justify-content:center; padding:24px; }
+    .card { max-width: 520px; width:100%; text-align:center; }
+    .spinner {
+      width: 44px; height: 44px; margin: 0 auto 16px;
+      border-radius: 50%;
+      border: 4px solid rgba(127,127,127,.25);
+      border-top-color: rgba(127,127,127,.95);
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .hint { opacity:.8; font-size:14px; line-height:1.4; }
+    a { word-break: break-all; }
+    .btn {
+      display:inline-block; margin-top:12px; padding:10px 14px;
+      border:1px solid rgba(127,127,127,.35); border-radius:10px; text-decoration:none;
+    }
+  </style>
+
+  <script>
+    const dest = "https://statsh.app/personality/";
+    // 한 번 화면이 그려진 다음 이동(로딩이 '보이는' 느낌)
+    requestAnimationFrame(() => location.replace(dest));
+  </script>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="spinner" aria-hidden="true"></div>
+      <div style="font-size:18px; margin-bottom:8px;">STATSH로 이동 중…</div>
+      <div class="hint">
+        목적지: <strong>statsh.app</strong><br />
+        자동 이동이 안 되면 아래 버튼을 눌러주세요.
+      </div>
+      <a class="btn" href="https://statsh.app/personality/" rel="noopener">바로 이동</a>
+      <div class="hint" style="margin-top:10px;">
+        https://statsh.app/personality/
+      </div>
+    </div>
+  </div>
+</body>
 </html>
